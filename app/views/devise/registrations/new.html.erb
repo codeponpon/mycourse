@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card mx-2">
+      <div class="card-block p-2">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+          <h1>Register</h1>
+          <p class="text-muted">
+            Create your account
+            <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum for password)</em>
+            <% end %><br />
+          </p>
+
+          <div class="input-group mb-1">
+            <span class="input-group-addon">@</span>
+            <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email'%>
+          </div>
+
+          <div class="input-group mb-1">
+            <span class="input-group-addon"><%= icon 'lock' %></span>
+            <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password' %>
+          </div>
+
+          <div class="input-group mb-2">
+            <span class="input-group-addon"><%= icon 'lock' %></i>
+            </span>
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Repeat password' %>
+          </div>
+
+          <button type="button" class="btn btn-block btn-success">Create Account</button>
+          <%- if controller_name != 'sessions' %>
+              <%= link_to "Log in", new_session_path(resource_name), class: 'btn btn-block btn-primary' %><br />
+          <% end -%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

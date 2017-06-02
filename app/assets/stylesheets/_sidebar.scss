@@ -1,0 +1,50 @@
+.sidebar {
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  color: #fff;
+  background: #263238;
+
+  .sidebar-nav {
+    position: relative;
+    overflow: hidden;
+    width: 200px;
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      padding-left: 0;
+      margin-bottom: 0;
+      list-style: none;
+    }
+  }
+
+  .nav-link {
+    display: block;
+  }
+
+  .nav .nav-item {
+    position: relative;
+    margin: 0;
+    transition: background .3s ease-in-out;
+  }
+
+  .nav .nav-item .nav-link:hover,
+  .nav .nav-item .navbar .dropdown-toggle:hover,
+  .navbar .sidebar .nav .nav-item .dropdown-toggle:hover {
+    color: #fff !important;
+    background: #20a8d8 !important;
+  }
+
+  .nav .nav-item .nav-link,
+  .nav .nav-item .navbar .dropdown-toggle,
+  .navbar .sidebar .nav .nav-item .dropdown-toggle {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #fff;
+    text-decoration: none;
+    background: transparent;
+  }
+}

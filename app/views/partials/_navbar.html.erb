@@ -1,0 +1,16 @@
+<div class="header clearfix">
+  <nav>
+    <% if user_signed_in? %>
+      <ul class="nav nav-pills float-right">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><%= current_user.email %></a>
+          <div class="dropdown-menu" aria-labelledby="dropdown01">
+            <%= link_to raw("#{icon 'user'} Profile"), '#', class: 'dropdown-item' %>
+            <%= link_to raw("#{icon 'lock'} Log out"), destroy_user_session_path, class: 'dropdown-item', method: :delete %>
+          </div>
+        </li>
+      </ul>
+    <% end %>
+  </nav>
+  <h3 class="text-muted">My Course</h3>
+</div>

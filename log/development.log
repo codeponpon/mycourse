@@ -264,3 +264,1566 @@ puma (3.9.0) lib/puma/server.rb:602:in `handle_request'
 puma (3.9.0) lib/puma/server.rb:435:in `process_client'
 puma (3.9.0) lib/puma/server.rb:299:in `block in run'
 puma (3.9.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-06-02 15:07:30 +0700
+  [1m[35m (7.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.2ms)
+Started GET "/cable" for 127.0.0.1 at 2017-06-02 15:07:34 +0700
+Completed 500 Internal Server Error in 4657ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (couldn't find file 'popper' with type 'application/javascript'
+Checked in these paths: 
+  /Users/pond/Workspace/codeponpon/mycourse/app/assets/config
+  /Users/pond/Workspace/codeponpon/mycourse/app/assets/images
+  /Users/pond/Workspace/codeponpon/mycourse/app/assets/javascripts
+  /Users/pond/Workspace/codeponpon/mycourse/app/assets/stylesheets
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/actioncable-5.1.1/lib/assets/compiled
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/actionview-5.1.1/lib/assets/compiled
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/turbolinks-source-5.0.3/lib/assets/javascripts
+  /Users/pond/Workspace/codeponpon/mycourse/node_modules
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/bootstrap-4.0.0.alpha6/assets/stylesheets
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/bootstrap-4.0.0.alpha6/assets/javascripts
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/font-awesome-sass-4.7.0/assets/stylesheets
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/font-awesome-sass-4.7.0/assets/fonts):
+    4:     <title>Mycourse</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+   10: 
+  
+app/assets/javascripts/application.js:15
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___3979560357526210708_70276855891820'
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2017-06-02 15:07:36 +0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Subscription class not found: "ActivityChannel"
+Started GET "/" for 127.0.0.1 at 2017-06-02 15:12:12 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 477ms (Views: 472.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 15:40:05 +0700
+  [1m[35m (6.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.3ms)
+Completed 500 Internal Server Error in 71ms (ActiveRecord: 4.9ms)
+
+
+  
+SyntaxError (/Users/pond/Workspace/codeponpon/mycourse/app/views/layouts/application.html.erb:7: syntax error, unexpected tIDENTIFIER, expecting ')'
+cation', 'metisMenu.min' media: 'all', 'data-turbolinks-trac
+                              ^
+/Users/pond/Workspace/codeponpon/mycourse/app/views/layouts/application.html.erb:7: syntax error, unexpected ',', expecting ')'
+ 'metisMenu.min' media: 'all', 'data-turbolinks-track': 'rel
+                              ^):
+  
+app/views/layouts/application.html.erb:7: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/layouts/application.html.erb:7: syntax error, unexpected ',', expecting ')'
+Started GET "/cable" for 127.0.0.1 at 2017-06-02 15:40:12 +0700
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2017-06-02 15:40:12 +0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Subscription class not found: "ActivityChannel"
+Started GET "/" for 127.0.0.1 at 2017-06-02 15:40:31 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 4218ms (ActiveRecord: 2.0ms)
+
+
+  
+ActionView::Template::Error (Asset was not declared to be precompiled in production.
+Add `Rails.application.config.assets.precompile += %w( metisMenu.min.css )` to `config/initializers/assets.rb` and restart your server):
+    4:     <title>Mycourse</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', 'metisMenu.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+   10: 
+  
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___2257925208628486667_70120735432800'
+Started GET "/cable" for 127.0.0.1 at 2017-06-02 15:41:55 +0700
+  [1m[35m (7.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2017-06-02 15:41:55 +0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Subscription class not found: "ActivityChannel"
+Started GET "/" for 127.0.0.1 at 2017-06-02 15:42:01 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+  Rendered partials/_nav_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 591ms (Views: 504.7ms | ActiveRecord: 7.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 15:42:57 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+  Rendered partials/_side_bar.html.erb (0.9ms) [cache miss]
+  Rendered partials/_nav_bar.html.erb (8.2ms) [cache miss]
+Completed 200 OK in 83ms (Views: 78.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 15:44:42 +0700
+  [1m[35m (8.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.5ms)
+  Rendered partials/_side_bar.html.erb (0.3ms) [cache miss]
+  Rendered partials/_nav_bar.html.erb (2.2ms) [cache miss]
+Completed 200 OK in 4749ms (Views: 4656.2ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2017-06-02 15:44:48 +0700
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2017-06-02 15:44:48 +0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Subscription class not found: "ActivityChannel"
+Started GET "/" for 127.0.0.1 at 2017-06-02 15:45:25 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+  Rendered partials/_nav_bar.html.erb (22.5ms) [cache miss]
+Completed 200 OK in 446ms (Views: 367.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 15:48:59 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+  Rendered partials/_nav_bar.html.erb (4.2ms) [cache miss]
+Completed 200 OK in 2735ms (Views: 2728.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 15:49:13 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+  Rendered partials/_nav_bar.html.erb (2.4ms) [cache miss]
+Completed 200 OK in 135ms (Views: 129.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 15:49:36 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+  Rendered partials/_side_bar.html.erb (1.0ms) [cache miss]
+  Rendered partials/_nav_bar.html.erb (4.9ms) [cache miss]
+Completed 200 OK in 2871ms (Views: 2864.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2017-06-02 15:49:56 +0700
+  [1m[35m (6.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2017-06-02 15:49:56 +0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Subscription class not found: "ActivityChannel"
+Started GET "/" for 127.0.0.1 at 2017-06-02 15:50:04 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (3.7ms)
+  Rendered partials/_side_bar.html.erb (0.2ms) [cache miss]
+  Rendered partials/_nav_bar.html.erb (1.9ms) [cache miss]
+Completed 200 OK in 663ms (Views: 585.9ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:05:24 +0700
+  [1m[35m (7.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.2ms)
+  Rendered partials/_nav_bar.html.erb (0.6ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 663ms (Views: 588.5ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2017-06-02 16:05:26 +0700
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2017-06-02 16:05:26 +0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Subscription class not found: "ActivityChannel"
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:07:49 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+  Rendered partials/_nav_bar.html.erb (0.6ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 88ms (Views: 77.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:11:07 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+  Rendered partials/_nav_bar.html.erb (0.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 238ms (Views: 218.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:11:17 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+  Rendered partials/_nav_bar.html.erb (0.8ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 3382ms (Views: 3376.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:11:44 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  Rendered partials/_nav_bar.html.erb (0.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.8ms) [cache miss]
+Completed 200 OK in 73ms (Views: 62.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:13:08 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+  Rendered partials/_nav_bar.html.erb (0.6ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 95ms (Views: 89.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/img/avatars/6.jpg" for 127.0.0.1 at 2017-06-02 16:13:08 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/img/avatars/6.jpg"):
+  
+actionpack (5.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.1) lib/rails/engine.rb:522:in `call'
+puma (3.9.0) lib/puma/configuration.rb:224:in `call'
+puma (3.9.0) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.0) lib/puma/server.rb:435:in `process_client'
+puma (3.9.0) lib/puma/server.rb:299:in `block in run'
+puma (3.9.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/img/avatars/6.jpg" for 127.0.0.1 at 2017-06-02 16:13:09 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/img/avatars/6.jpg"):
+  
+actionpack (5.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.1) lib/rails/engine.rb:522:in `call'
+puma (3.9.0) lib/puma/configuration.rb:224:in `call'
+puma (3.9.0) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.0) lib/puma/server.rb:435:in `process_client'
+puma (3.9.0) lib/puma/server.rb:299:in `block in run'
+puma (3.9.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:13:58 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  Rendered partials/_nav_bar.html.erb (0.5ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 2826ms (Views: 2816.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/img/avatars/6.jpg" for 127.0.0.1 at 2017-06-02 16:14:01 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/img/avatars/6.jpg"):
+  
+actionpack (5.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.1) lib/rails/engine.rb:522:in `call'
+puma (3.9.0) lib/puma/configuration.rb:224:in `call'
+puma (3.9.0) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.0) lib/puma/server.rb:435:in `process_client'
+puma (3.9.0) lib/puma/server.rb:299:in `block in run'
+puma (3.9.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/img/avatars/6.jpg" for 127.0.0.1 at 2017-06-02 16:14:02 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/img/avatars/6.jpg"):
+  
+actionpack (5.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.1) lib/rails/engine.rb:522:in `call'
+puma (3.9.0) lib/puma/configuration.rb:224:in `call'
+puma (3.9.0) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.0) lib/puma/server.rb:435:in `process_client'
+puma (3.9.0) lib/puma/server.rb:299:in `block in run'
+puma (3.9.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:15:32 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  Rendered partials/_nav_bar.html.erb (0.5ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.3ms) [cache miss]
+Completed 200 OK in 2853ms (Views: 2843.0ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/img/avatars/6.jpg" for 127.0.0.1 at 2017-06-02 16:15:35 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/img/avatars/6.jpg"):
+  
+actionpack (5.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.1) lib/rails/engine.rb:522:in `call'
+puma (3.9.0) lib/puma/configuration.rb:224:in `call'
+puma (3.9.0) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.0) lib/puma/server.rb:435:in `process_client'
+puma (3.9.0) lib/puma/server.rb:299:in `block in run'
+puma (3.9.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/img/avatars/6.jpg" for 127.0.0.1 at 2017-06-02 16:15:35 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/img/avatars/6.jpg"):
+  
+actionpack (5.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.1) lib/rails/engine.rb:522:in `call'
+puma (3.9.0) lib/puma/configuration.rb:224:in `call'
+puma (3.9.0) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.0) lib/puma/server.rb:435:in `process_client'
+puma (3.9.0) lib/puma/server.rb:299:in `block in run'
+puma (3.9.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:15:50 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+  Rendered partials/_nav_bar.html.erb (0.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 90ms (Views: 82.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/img/avatars/6.jpg" for 127.0.0.1 at 2017-06-02 16:15:50 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/img/avatars/6.jpg"):
+  
+actionpack (5.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.1) lib/rails/engine.rb:522:in `call'
+puma (3.9.0) lib/puma/configuration.rb:224:in `call'
+puma (3.9.0) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.0) lib/puma/server.rb:435:in `process_client'
+puma (3.9.0) lib/puma/server.rb:299:in `block in run'
+puma (3.9.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/img/avatars/6.jpg" for 127.0.0.1 at 2017-06-02 16:15:51 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/img/avatars/6.jpg"):
+  
+actionpack (5.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.1) lib/rails/engine.rb:522:in `call'
+puma (3.9.0) lib/puma/configuration.rb:224:in `call'
+puma (3.9.0) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.0) lib/puma/server.rb:435:in `process_client'
+puma (3.9.0) lib/puma/server.rb:299:in `block in run'
+puma (3.9.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:17:19 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  Rendered partials/_nav_bar.html.erb (0.5ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 93ms (Views: 87.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/img/avatars/6.jpg" for 127.0.0.1 at 2017-06-02 16:17:19 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/img/avatars/6.jpg"):
+  
+actionpack (5.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.1) lib/rails/engine.rb:522:in `call'
+puma (3.9.0) lib/puma/configuration.rb:224:in `call'
+puma (3.9.0) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.0) lib/puma/server.rb:435:in `process_client'
+puma (3.9.0) lib/puma/server.rb:299:in `block in run'
+puma (3.9.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/img/avatars/6.jpg" for 127.0.0.1 at 2017-06-02 16:17:19 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/img/avatars/6.jpg"):
+  
+actionpack (5.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.1) lib/rails/engine.rb:522:in `call'
+puma (3.9.0) lib/puma/configuration.rb:224:in `call'
+puma (3.9.0) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.0) lib/puma/server.rb:435:in `process_client'
+puma (3.9.0) lib/puma/server.rb:299:in `block in run'
+puma (3.9.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:17:37 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  Rendered partials/_nav_bar.html.erb (0.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 74ms (Views: 66.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:31:02 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.5ms)
+  Rendered partials/_navbar.html.erb (0.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 3094ms (Views: 3060.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:31:35 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+  Rendered partials/_navbar.html.erb (0.6ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 73ms (Views: 65.3ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:31:36 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  Rendered partials/_navbar.html.erb (0.6ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 75ms (Views: 69.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:33:00 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  Rendered partials/_navbar.html.erb (0.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.3ms) [cache miss]
+Completed 200 OK in 2982ms (Views: 2976.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:33:35 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+  Rendered partials/_navbar.html.erb (0.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.3ms) [cache miss]
+Completed 200 OK in 61ms (Views: 57.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:34:28 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+  Rendered partials/_navbar.html.erb (0.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 90ms (Views: 85.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:34:47 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+  Rendered partials/_navbar.html.erb (1.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.8ms) [cache miss]
+Completed 200 OK in 3017ms (Views: 3011.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:39:10 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+  Rendered partials/_navbar.html.erb (0.8ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.3ms) [cache miss]
+Completed 200 OK in 2929ms (Views: 2923.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:40:08 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  Rendered partials/_navbar.html.erb (0.5ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 2803ms (Views: 2796.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:40:23 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  Rendered partials/_navbar.html.erb (0.9ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 3210ms (Views: 3204.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:41:29 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.8ms)
+  Rendered partials/_navbar.html.erb (0.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 2994ms (Views: 2985.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/index.html" for 127.0.0.1 at 2017-06-02 16:44:25 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/index.html"):
+  
+actionpack (5.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.1) lib/rails/engine.rb:522:in `call'
+puma (3.9.0) lib/puma/configuration.rb:224:in `call'
+puma (3.9.0) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.0) lib/puma/server.rb:435:in `process_client'
+puma (3.9.0) lib/puma/server.rb:299:in `block in run'
+puma (3.9.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:44:27 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+  Rendered partials/_navbar.html.erb (1.8ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 94ms (Views: 85.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:45:19 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+  Rendered partials/_navbar.html.erb (0.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 2884ms (Views: 2874.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:46:33 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+  Rendered partials/_navbar.html.erb (0.5ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 82ms (Views: 76.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:46:41 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+  Rendered partials/_navbar.html.erb (0.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 59ms (Views: 53.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:46:41 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.8ms)
+  Rendered partials/_navbar.html.erb (0.5ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 112ms (Views: 105.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:46:42 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+  Rendered partials/_navbar.html.erb (0.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 101ms (Views: 95.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:47:20 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+  Rendered partials/_navbar.html.erb (0.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.3ms) [cache miss]
+Completed 200 OK in 75ms (Views: 67.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:48:30 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  Rendered partials/_navbar.html.erb (0.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 2692ms (Views: 2684.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:50:30 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+  Rendered partials/_navbar.html.erb (0.5ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.3ms) [cache miss]
+Completed 200 OK in 2679ms (Views: 2674.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/index.html" for 127.0.0.1 at 2017-06-02 16:50:36 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/index.html"):
+  
+actionpack (5.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.1) lib/rails/engine.rb:522:in `call'
+puma (3.9.0) lib/puma/configuration.rb:224:in `call'
+puma (3.9.0) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.0) lib/puma/server.rb:435:in `process_client'
+puma (3.9.0) lib/puma/server.rb:299:in `block in run'
+puma (3.9.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:50:38 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  Rendered partials/_navbar.html.erb (0.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 60ms (Views: 54.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:51:25 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  Rendered partials/_navbar.html.erb (0.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 63ms (Views: 58.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:52:02 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+  Rendered partials/_navbar.html.erb (2.4ms)
+Completed 500 Internal Server Error in 73ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `[]' for nil:NilClass):
+    2:   <nav>
+    3:     <ul class="nav nav-pills float-right">
+    4:       <li class="nav-item">
+    5:       <a class="nav-link" href="#"><%= @current_user[:first_name] %></a>
+    6:       </li>
+    7:     </ul>
+    8:   </nav>
+  
+app/views/partials/_navbar.html.erb:5:in `_app_views_partials__navbar_html_erb___1113093261795319337_70312174301160'
+app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__2864161336085908168_70312189795400'
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:52:10 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+  Rendered partials/_navbar.html.erb (0.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 77ms (Views: 73.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:53:13 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  Rendered partials/_navbar.html.erb (0.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 69ms (Views: 62.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:53:57 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  Rendered partials/_navbar.html.erb (0.6ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 83ms (Views: 75.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:54:26 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+  Rendered partials/_navbar.html.erb (0.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 82ms (Views: 76.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:54:30 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+  Rendered partials/_navbar.html.erb (0.6ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 64ms (Views: 58.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:56:27 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+  Rendered partials/_navbar.html.erb (1.1ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 78ms (Views: 71.7ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-06-02 16:56:29 +0700
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"iaZbiIZTp1F5LorD5aJMFudy9+ZwH9HjP+298YWL/Gg/mIdeh0+ZI8ZcAk9Moccm/PqKtOWZlxkBK7Uz65Ywvg=="}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 53ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:56:30 +0700
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 7ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 16:56:30 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.4ms) [cache miss]
+  Rendered devise/sessions/new.html.erb within layouts/application (19.6ms)
+  Rendered partials/_navbar.html.erb (1.1ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 107ms (Views: 103.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 16:56:35 +0700
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 16:56:35 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms) [cache miss]
+  Rendered devise/sessions/new.html.erb within layouts/application (8.8ms)
+  Rendered partials/_navbar.html.erb (0.5ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 59ms (Views: 56.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 16:59:40 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (0.6ms)
+  Rendered partials/_navbar.html.erb (0.6ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 80ms (Views: 78.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:00:42 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (4.3ms) [cache miss]
+  Rendered devise/sessions/new.html.erb within layouts/application (10.9ms)
+  Rendered partials/_navbar.html.erb (1.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 88ms (Views: 85.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:06:17 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (5.1ms)
+  Rendered partials/_navbar.html.erb (0.9ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.3ms) [cache miss]
+Completed 200 OK in 97ms (Views: 94.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:06:27 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (3.5ms)
+  Rendered partials/_navbar.html.erb (0.9ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 74ms (Views: 73.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:06:41 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (4.3ms)
+  Rendered partials/_navbar.html.erb (1.5ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 154ms (Views: 151.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:07:32 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (2.8ms)
+  Rendered partials/_navbar.html.erb (0.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 83ms (Views: 81.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:08:59 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (2.3ms)
+  Rendered partials/_navbar.html.erb (0.9ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 74ms (Views: 73.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:09:56 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (3.1ms)
+  Rendered partials/_navbar.html.erb (1.6ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 2874ms (Views: 2871.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:10:32 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (2.2ms)
+  Rendered partials/_navbar.html.erb (1.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 2660ms (Views: 2656.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:11:46 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (2.9ms)
+  Rendered partials/_navbar.html.erb (0.6ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.3ms) [cache miss]
+Completed 200 OK in 2687ms (Views: 2686.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:12:44 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (2.3ms)
+  Rendered partials/_navbar.html.erb (1.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 2719ms (Views: 2717.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:13:40 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (2.1ms)
+  Rendered partials/_navbar.html.erb (0.8ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 2660ms (Views: 2657.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:14:15 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (3.3ms)
+  Rendered partials/_navbar.html.erb (0.5ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 57ms (Views: 55.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:16:14 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (2.5ms)
+  Rendered partials/_navbar.html.erb (0.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.3ms) [cache miss]
+Completed 200 OK in 4066ms (Views: 4064.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:16:56 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (5.4ms)
+  Rendered partials/_navbar.html.erb (1.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 98ms (Views: 97.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:17:30 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (2.9ms)
+  Rendered partials/_navbar.html.erb (4.7ms)
+Completed 500 Internal Server Error in 75ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `[]' for nil:NilClass):
+    2:   <nav>
+    3:     <ul class="nav nav-pills float-right">
+    4:       <li class="nav-item dropdown">
+    5:         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><%= @current_user[:first_name] %></a>
+    6:         <div class="dropdown-menu" aria-labelledby="dropdown01">
+    7:           <%= link_to 'Profile', '#', class: 'dropdown-item' %>
+    8:           <%= link_to 'Logout', destroy_user_session_path, class: 'dropdown-item', method: :delete %>
+  
+app/views/partials/_navbar.html.erb:5:in `_app_views_partials__navbar_html_erb___1113093261795319337_70312136899360'
+app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__2864161336085908168_70312181914320'
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:18:32 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (2.2ms)
+  Rendered partials/_navbar.html.erb (0.8ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.3ms) [cache miss]
+Completed 200 OK in 60ms (Views: 58.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:18:48 +0700
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZfolnmrMC4C33qSQCTOE4qLd8olZFWuHMClfJ7KSrEBuGXbhGZIkGYKEKoO208kZ4A6HsR5PMlG56gdkaDb7Ag==", "user"=>{"email"=>"user@example.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["current_sign_in_at", "2017-06-02 10:18:48.735878"], ["sign_in_count", 2], ["updated_at", "2017-06-02 10:18:48.736794"], ["id", 1]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 195ms (ActiveRecord: 6.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 17:18:48 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+  Rendered partials/_navbar.html.erb (0.6ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 53ms (Views: 49.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 17:19:52 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  Rendered partials/_navbar.html.erb (0.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 73ms (Views: 67.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 17:19:59 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+  Rendered partials/_navbar.html.erb (1.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 76ms (Views: 70.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 17:20:16 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+  Rendered partials/_navbar.html.erb (0.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 80ms (Views: 73.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 17:20:32 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+  Rendered partials/_navbar.html.erb (0.6ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 90ms (Views: 78.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 17:20:44 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+  Rendered partials/_navbar.html.erb (0.6ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 66ms (Views: 58.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 17:21:02 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.6ms)
+  Rendered partials/_navbar.html.erb (1.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 85ms (Views: 71.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 17:22:52 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.8ms)
+  Rendered partials/_navbar.html.erb (0.9ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 108ms (Views: 100.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 17:22:58 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (3.2ms)
+  Rendered partials/_navbar.html.erb (2.1ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 88ms (Views: 81.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 17:23:42 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.3ms)
+  Rendered partials/_navbar.html.erb (0.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 115ms (Views: 109.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 17:24:16 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.4ms)
+  Rendered partials/_navbar.html.erb (1.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 3599ms (Views: 3592.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 17:24:25 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  Rendered partials/_navbar.html.erb (1.1ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 67ms (Views: 62.0ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-06-02 17:25:05 +0700
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"6HAHMnnQGuTfZZFd13G02GgTCPhjRr7mJ41ymnS0a5+YDgjrNkbp1yc6WJcqmQrnggUr6v5Y9JqnbBALQLBUWg=="}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 12ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 17:25:05 +0700
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:25:05 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (3.1ms)
+  Rendered partials/_navbar.html.erb (0.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 76ms (Views: 74.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-06-02 17:25:07 +0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/devise-4.3.0/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.4ms) [cache miss]
+  Rendered /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/devise-4.3.0/app/views/devise/registrations/new.html.erb within layouts/application (7.7ms)
+  Rendered partials/_navbar.html.erb (0.8ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 83ms (Views: 81.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:27:30 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (4.4ms)
+  Rendered partials/_navbar.html.erb (1.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 135ms (Views: 129.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:27:31 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (2.2ms)
+  Rendered partials/_navbar.html.erb (1.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 80ms (Views: 78.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-06-02 17:27:36 +0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms) [cache miss]
+  Rendered devise/registrations/new.html.erb within layouts/application (14.0ms)
+  Rendered partials/_navbar.html.erb (1.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 85ms (Views: 83.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:28:01 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (3.1ms)
+  Rendered partials/_navbar.html.erb (0.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (4.9ms) [cache miss]
+Completed 200 OK in 132ms (Views: 130.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:28:02 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (2.9ms)
+  Rendered partials/_navbar.html.erb (1.1ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.8ms) [cache miss]
+Completed 200 OK in 97ms (Views: 95.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-06-02 17:28:17 +0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms) [cache miss]
+  Rendered devise/registrations/new.html.erb within layouts/application (8.1ms)
+  Rendered partials/_navbar.html.erb (0.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 84ms (Views: 82.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:28:43 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (3.8ms)
+  Rendered partials/_navbar.html.erb (2.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 120ms (Views: 118.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-06-02 17:28:46 +0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.2ms) [cache miss]
+  Rendered devise/registrations/new.html.erb within layouts/application (11.1ms)
+  Rendered partials/_navbar.html.erb (0.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.4ms) [cache miss]
+Completed 200 OK in 103ms (Views: 101.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-06-02 17:32:02 +0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms) [cache miss]
+  Rendered devise/registrations/new.html.erb within layouts/application (6.5ms)
+  Rendered partials/_navbar.html.erb (1.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 85ms (Views: 83.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-06-02 17:32:38 +0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (4.9ms) [cache miss]
+  Rendered devise/registrations/new.html.erb within layouts/application (14.0ms)
+  Rendered partials/_navbar.html.erb (1.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 95ms (Views: 94.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-06-02 17:33:30 +0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms) [cache miss]
+  Rendered devise/registrations/new.html.erb within layouts/application (7.8ms)
+  Rendered partials/_navbar.html.erb (0.8ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.3ms) [cache miss]
+Completed 200 OK in 92ms (Views: 91.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-06-02 17:33:42 +0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms) [cache miss]
+  Rendered devise/registrations/new.html.erb within layouts/application (7.6ms)
+  Rendered partials/_navbar.html.erb (1.5ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 86ms (Views: 84.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-06-02 17:33:51 +0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (4.0ms)
+  Rendered partials/_navbar.html.erb (1.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 90ms (Views: 88.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-06-02 17:34:11 +0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (4.2ms)
+  Rendered partials/_navbar.html.erb (0.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.2ms) [cache miss]
+Completed 200 OK in 87ms (Views: 85.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:34:19 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (3.8ms)
+  Rendered partials/_navbar.html.erb (0.9ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 89ms (Views: 86.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:35:07 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (5.1ms)
+  Rendered partials/_navbar.html.erb (1.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 78ms (Views: 76.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-06-02 17:35:18 +0700
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zAtU3GP8lY0t9Zoy+9cXPHXv46EL15fqHO8cFF9NBtKdoMC+b6wk3JTweTLCBO9gkONIPcc+DPA85ffTuTgpNw==", "user"=>{"email"=>"user@example.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (6.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-06-02 10:35:18.825343"], ["last_sign_in_at", "2017-06-02 10:18:48.735878"], ["sign_in_count", 3], ["updated_at", "2017-06-02 10:35:18.828228"], ["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 180ms (ActiveRecord: 9.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 17:35:18 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  Rendered partials/_navbar.html.erb (1.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.1ms) [cache miss]
+Completed 200 OK in 67ms (Views: 63.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 17:37:30 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (6.3ms)
+  Rendered partials/_navbar.html.erb (2.1ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 118ms (Views: 111.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 17:37:37 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (6.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+  Rendered partials/_navbar.html.erb (2.4ms)
+Completed 500 Internal Server Error in 82ms (ActiveRecord: 6.3ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 3, expected 1)):
+     5:         <li class="nav-item dropdown">
+     6:           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><%= current_user.email %></a>
+     7:           <div class="dropdown-menu" aria-labelledby="dropdown01">
+     8:             <%= link_to raw "#{icon 'user'} Profile", '#', class: 'dropdown-item' %>
+     9:             <%= link_to 'Logout', destroy_user_session_path, class: 'dropdown-item', method: :delete %>
+    10:           </div>
+    11:         </li>
+  
+app/views/partials/_navbar.html.erb:8:in `_app_views_partials__navbar_html_erb___1113093261795319337_70312205374640'
+app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__2864161336085908168_70312207573580'
+Started GET "/" for 127.0.0.1 at 2017-06-02 17:37:44 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+  Rendered partials/_navbar.html.erb (2.0ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 116ms (Views: 111.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-02 17:38:13 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  Rendered partials/_navbar.html.erb (1.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.8ms) [cache miss]
+Completed 200 OK in 77ms (Views: 72.1ms | ActiveRecord: 0.9ms)
+
+
