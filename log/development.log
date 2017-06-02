@@ -1,0 +1,11 @@
+Started GET "/" for 127.0.0.1 at 2017-06-02 14:36:43 +0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/railties-5.1.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/railties-5.1.1/lib/rails/templates/rails/welcome/index.html.erb (3.6ms)
+Completed 200 OK in 226ms (Views: 8.4ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2017-06-02 14:36:50 +0700
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2017-06-02 14:36:50 +0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Subscription class not found: "ActivityChannel"
