@@ -48,4 +48,11 @@
     background: transparent;
     width: 200px;
   }
+
+  .nav .nav-item .nav-link.active,
+  .nav .nav-item .navbar .active.dropdown-toggle,
+  .navbar .sidebar .nav .nav-item .active.dropdown-toggle {
+    color: #fff;
+    background: #353844;
+  }
 }

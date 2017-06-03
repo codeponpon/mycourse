@@ -6320,3 +6320,1906 @@ Migrating to CreateEnrollments (20170603085933)
   [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" ORDER BY "courses"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" ORDER BY "courses"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" INNER JOIN "enrollments" ON "users"."id" = "enrollments"."user_id" WHERE "enrollments"."course_id" = $1 LIMIT $2[0m  [["course_id", 1], ["LIMIT", 11]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7843957021071774225);[0m
+  [1m[35m (7.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RolifyCreateRoles (20170603095851)
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7843957021071774225)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7843957021071774225);[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RolifyCreateRoles (20170603095851)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (28.6ms)[0m  [1m[35mCREATE TABLE "roles" ("id" bigserial primary key, "name" character varying, "resource_type" character varying, "resource_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_roles_on_resource_type_and_resource_id" ON "roles"  ("resource_type", "resource_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "users_roles" ("user_id" bigint, "role_id" bigint)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_users_roles_on_user_id" ON "users_roles"  ("user_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_users_roles_on_role_id" ON "users_roles"  ("role_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_roles_on_name" ON "roles"  ("name")[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE  INDEX  "index_roles_on_name_and_resource_type_and_resource_id" ON "roles"  ("name", "resource_type", "resource_id")[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE  INDEX  "index_users_roles_on_user_id_and_role_id" ON "users_roles"  ("user_id", "role_id")[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170603095851"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7843957021071774225)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mRole Load (19.4ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."name" = $1 AND "roles"."resource_type" IS NULL AND "roles"."resource_id" IS NULL ORDER BY "roles"."id" ASC LIMIT $2[0m  [["name", "instructor"], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "instructor"], ["created_at", "2017-06-03 10:01:33.115526"], ["updated_at", "2017-06-03 10:01:33.115526"]]
+  [1m[35m (6.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRole Exists (19.3ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = $1 AND "roles"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "roles".id FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mRole Load (0.5ms)[0m  [1m[34mSELECT "roles".* FROM "roles" WHERE "roles"."id" = 1[0m
+  [1m[36mRole Load (1.2ms)[0m  [1m[34mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users_roles" ("user_id", "role_id") VALUES ($1, $2)[0m  [["user_id", 1], ["role_id", 1]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mRole Load (0.7ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."name" = $1 AND "roles"."resource_type" IS NULL AND "roles"."resource_id" IS NULL ORDER BY "roles"."id" ASC LIMIT $2[0m  [["name", "student"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "student"], ["created_at", "2017-06-03 10:01:49.300711"], ["updated_at", "2017-06-03 10:01:49.300711"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRole Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = $1 AND "roles"."id" = $2 LIMIT $3[0m  [["user_id", 2], ["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "roles".id FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mRole Load (0.4ms)[0m  [1m[34mSELECT "roles".* FROM "roles" WHERE "roles"."id" = 2[0m
+  [1m[36mRole Load (0.5ms)[0m  [1m[34mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users_roles" ("user_id", "role_id") VALUES ($1, $2)[0m  [["user_id", 2], ["role_id", 2]]
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRole Load (1.2ms)[0m  [1m[34mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = $1 AND (((roles.name = 'student') AND (roles.resource_type IS NULL) AND (roles.resource_id IS NULL)))[0m  [["user_id", 2]]
+  [1m[36mRole Load (1.1ms)[0m  [1m[34mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = $1 AND (((roles.name = 'instuctor') AND (roles.resource_type IS NULL) AND (roles.resource_id IS NULL)))[0m  [["user_id", 2]]
+Started GET "/" for 127.0.0.1 at 2017-06-03 17:05:02 +0700
+  [1m[35m (7.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.4ms)
+  Rendered partials/_navbar.html.erb (1.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.4ms) [cache miss]
+Completed 200 OK in 668ms (Views: 598.8ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-03 17:05:05 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.1ms)
+  Rendered partials/_navbar.html.erb (0.8ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.0ms) [cache miss]
+Completed 200 OK in 135ms (Views: 130.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:05:07 +0700
+Processing by CoursesController#show as HTML
+  Rendering courses/show.html.erb within layouts/application
+  Rendered courses/show.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (4.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 126ms (Views: 122.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:06:46 +0700
+Processing by CoursesController#show as HTML
+  Rendering courses/show.html.erb within layouts/application
+  Rendered courses/show.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.2ms) [cache miss]
+Completed 200 OK in 88ms (Views: 85.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:06:55 +0700
+Processing by CoursesController#show as HTML
+  Rendering courses/show.html.erb within layouts/application
+  Rendered courses/show.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.1ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 70ms (Views: 67.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:07:13 +0700
+Processing by CoursesController#show as HTML
+  Rendering courses/show.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (1.4ms) [cache miss]
+  Rendered courses/show.html.erb within layouts/application (7.3ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (6.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (2.5ms) [cache miss]
+Completed 200 OK in 99ms (Views: 92.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:09:14 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.5ms) [cache miss]
+  Rendered courses/index.html.erb within layouts/application (2.3ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (24.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 90ms (Views: 81.8ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-03 17:09:25 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.6ms) [cache miss]
+  Rendered home/index.html.erb within layouts/application (4.5ms)
+  Rendered partials/_navbar.html.erb (0.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 75ms (Views: 65.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-03 17:09:26 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.8ms) [cache miss]
+  Rendered home/index.html.erb within layouts/application (2.8ms)
+  Rendered partials/_navbar.html.erb (1.1ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 76ms (Views: 70.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:09:27 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.4ms) [cache miss]
+  Rendered courses/index.html.erb within layouts/application (2.1ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.1ms) [cache miss]
+Completed 200 OK in 105ms (Views: 102.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:09:38 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.6ms) [cache miss]
+  Rendered courses/index.html.erb within layouts/application (3.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.9ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.8ms) [cache miss]
+Completed 200 OK in 90ms (Views: 87.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:11:00 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.5ms) [cache miss]
+  Rendered courses/index.html.erb within layouts/application (3.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.6ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 4071ms (Views: 4067.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:15:17 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (1.7ms) [cache miss]
+  Rendered courses/index.html.erb within layouts/application (9.1ms)
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (16.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.3ms) [cache miss]
+Completed 200 OK in 137ms (Views: 123.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:16:04 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.8ms) [cache miss]
+  Rendered courses/index.html.erb within layouts/application (3.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 73ms (Views: 70.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:17:59 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.8ms) [cache miss]
+  Rendered courses/index.html.erb within layouts/application (3.2ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (5.1ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.8ms) [cache miss]
+Completed 200 OK in 98ms (Views: 93.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-03 17:18:02 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.8ms) [cache miss]
+  Rendered home/index.html.erb within layouts/application (3.3ms)
+  Rendered partials/_navbar.html.erb (1.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.2ms) [cache miss]
+Completed 200 OK in 93ms (Views: 86.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:18:04 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.9ms) [cache miss]
+  Rendered courses/index.html.erb within layouts/application (3.7ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (4.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.3ms) [cache miss]
+Completed 200 OK in 140ms (Views: 137.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:18:11 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.7ms) [cache miss]
+  Rendered courses/index.html.erb within layouts/application (3.4ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (5.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.9ms) [cache miss]
+Completed 200 OK in 75ms (Views: 72.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:19:33 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.5ms) [cache miss]
+  Rendered courses/index.html.erb within layouts/application (2.6ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.5ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.1ms) [cache miss]
+Completed 200 OK in 93ms (Views: 88.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-03 17:20:28 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.7ms) [cache miss]
+  Rendered home/index.html.erb within layouts/application (3.9ms)
+  Rendered partials/_navbar.html.erb (0.8ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 83ms (Views: 77.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-03 17:21:08 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.4ms) [cache miss]
+  Rendered home/index.html.erb within layouts/application (2.7ms)
+  Rendered partials/_navbar.html.erb (7.9ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.1ms) [cache miss]
+Completed 200 OK in 77ms (Views: 72.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:21:14 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.5ms) [cache miss]
+  Rendered courses/index.html.erb within layouts/application (3.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.1ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.1ms) [cache miss]
+Completed 200 OK in 85ms (Views: 81.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:24:37 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.4ms) [cache miss]
+  Rendered courses/index.html.erb within layouts/application (2.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.9ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.1ms) [cache miss]
+Completed 200 OK in 80ms (Views: 76.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:27:49 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.5ms) [cache miss]
+  Rendered courses/index.html.erb within layouts/application (11.3ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::WillPaginate):
+     7:     </div>
+     8:     <div class="card-block">
+     9: 
+    10:       <%= will_paginate(@courses, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+    11:     </div>
+    12:   </div>
+    13: </div>
+  
+app/views/courses/index.html.erb:10:in `_app_views_courses_index_html_erb___4528380739219506881_70103370014740'
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:28:50 +0700
+  [1m[35m (6.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (1.0ms) [cache miss]
+  [1m[36mCourse Load (9.0ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1[0m  [["LIMIT", 11]]
+  Rendered courses/index.html.erb within layouts/application (73.6ms)
+Completed 500 Internal Server Error in 104ms (ActiveRecord: 17.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `total_pages' for #<Course::ActiveRecord_Relation:0x007fb070e439f0>):
+     7:     </div>
+     8:     <div class="card-block">
+     9: 
+    10:       <%= will_paginate(@courses, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+    11:     </div>
+    12:   </div>
+    13: </div>
+  
+app/views/courses/index.html.erb:10:in `_app_views_courses_index_html_erb___4342247227444466388_70197892485580'
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:30:43 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.4ms) [cache miss]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "courses"[0m
+  Rendered courses/index.html.erb within layouts/application (6.3ms)
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (35.9ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.2ms) [cache miss]
+Completed 200 OK in 464ms (Views: 449.3ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:34:19 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.3ms) [cache miss]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "courses"[0m
+  Rendered courses/index.html.erb within layouts/application (3.8ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 157ms (Views: 152.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:35:52 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (1.2ms) [cache miss]
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (64.5ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (5.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.8ms) [cache miss]
+Completed 200 OK in 199ms (Views: 167.9ms | ActiveRecord: 27.9ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:36:33 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (1.7ms) [cache miss]
+  [1m[36mCourse Load (1.2ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (18.2ms)
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (6.1ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.0ms) [cache miss]
+Completed 200 OK in 180ms (Views: 172.6ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:36:40 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (1.5ms) [cache miss]
+  [1m[36mCourse Load (0.7ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (9.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 110ms (Views: 106.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:37:14 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.7ms) [cache miss]
+  [1m[36mCourse Load (0.7ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (7.0ms)
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (9.1ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 97ms (Views: 92.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:38:17 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.4ms) [cache miss]
+  Rendered courses/index.html.erb within layouts/application (2.7ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.8ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.3ms) [cache miss]
+Completed 200 OK in 73ms (Views: 69.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:38:30 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.4ms) [cache miss]
+  Rendered courses/index.html.erb within layouts/application (2.2ms)
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (9.9ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.2ms) [cache miss]
+Completed 200 OK in 97ms (Views: 91.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:38:38 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.6ms) [cache miss]
+  Rendered courses/index.html.erb within layouts/application (4.2ms)
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (10.6ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.1ms) [cache miss]
+Completed 200 OK in 133ms (Views: 127.7ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:38:54 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.6ms) [cache miss]
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (6.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.8ms) [cache miss]
+Completed 200 OK in 70ms (Views: 65.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:39:51 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.4ms) [cache miss]
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (4.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.1ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 67ms (Views: 63.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:41:19 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (1.1ms) [cache miss]
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (6.7ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.5ms) [cache miss]
+Completed 200 OK in 3971ms (Views: 3967.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:42:15 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.4ms) [cache miss]
+  [1m[36mCourse Load (0.8ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (5.9ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.8ms) [cache miss]
+Completed 200 OK in 81ms (Views: 76.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:42:18 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.6ms) [cache miss]
+  [1m[36mCourse Load (9.7ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (15.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.8ms) [cache miss]
+Completed 200 OK in 80ms (Views: 67.6ms | ActiveRecord: 10.2ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:42:39 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.5ms) [cache miss]
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (6.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.5ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (2.6ms) [cache miss]
+Completed 200 OK in 88ms (Views: 82.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:44:33 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (3.1ms) [cache miss]
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (13.2ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.1ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.1ms) [cache miss]
+Completed 200 OK in 128ms (Views: 124.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:44:42 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.6ms) [cache miss]
+  [1m[36mCourse Load (0.9ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (8.8ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (2.1ms) [cache miss]
+Completed 200 OK in 169ms (Views: 164.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:45:04 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (1.0ms) [cache miss]
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (7.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 108ms (Views: 103.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:45:22 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.5ms) [cache miss]
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (6.1ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.7ms) [cache miss]
+Completed 200 OK in 78ms (Views: 74.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:46:47 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.4ms) [cache miss]
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (5.5ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 80ms (Views: 76.4ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:46:49 +0700
+  
+AbstractController::ActionNotFound (The action 'destroy' could not be found for CoursesController):
+  
+actionpack (5.1.1) lib/abstract_controller/base.rb:119:in `process'
+actionview (5.1.1) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.1) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.1) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.1) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.1) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.1) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.1) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.1) lib/action_dispatch/routing/route_set.rb:832:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.1) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.1) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.1) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.1) lib/rails/engine.rb:522:in `call'
+puma (3.9.0) lib/puma/configuration.rb:224:in `call'
+puma (3.9.0) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.0) lib/puma/server.rb:435:in `process_client'
+puma (3.9.0) lib/puma/server.rb:299:in `block in run'
+puma (3.9.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:47:26 +0700
+  
+AbstractController::ActionNotFound (The action 'destroy' could not be found for CoursesController):
+  
+actionpack (5.1.1) lib/abstract_controller/base.rb:119:in `process'
+actionview (5.1.1) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.1) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.1) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.1) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.1) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.1) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.1) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.1) lib/action_dispatch/routing/route_set.rb:832:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.1) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.1) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.1) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.1) lib/rails/engine.rb:522:in `call'
+puma (3.9.0) lib/puma/configuration.rb:224:in `call'
+puma (3.9.0) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.0) lib/puma/server.rb:435:in `process_client'
+puma (3.9.0) lib/puma/server.rb:299:in `block in run'
+puma (3.9.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:47:38 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.5ms) [cache miss]
+  [1m[36mCourse Load (0.7ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (33.9ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (41.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.8ms) [cache miss]
+Completed 200 OK in 146ms (Views: 112.2ms | ActiveRecord: 26.7ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:47:40 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"BhXFH0bvNO58e8CQIrMuFo/mtURju+Uo7t+CFW0b65fFyycDwxZLvWhzGfVUK4tMVmedsDb7Lr70tGse5wpJmw==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 118ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:47:42 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"BhXFH0bvNO58e8CQIrMuFo/mtURju+Uo7t+CFW0b65fFyycDwxZLvWhzGfVUK4tMVmedsDb7Lr70tGse5wpJmw==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 109ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:47:42 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"BhXFH0bvNO58e8CQIrMuFo/mtURju+Uo7t+CFW0b65fFyycDwxZLvWhzGfVUK4tMVmedsDb7Lr70tGse5wpJmw==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 100ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses/1/edit" for 127.0.0.1 at 2017-06-03 17:47:44 +0700
+  
+AbstractController::ActionNotFound (The action 'edit' could not be found for CoursesController):
+  
+actionpack (5.1.1) lib/abstract_controller/base.rb:119:in `process'
+actionview (5.1.1) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.1) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.1) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.1) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.1) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.1) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.1) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.1) lib/action_dispatch/routing/route_set.rb:832:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.1) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.1) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.1) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.1) lib/rails/engine.rb:522:in `call'
+puma (3.9.0) lib/puma/configuration.rb:224:in `call'
+puma (3.9.0) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.0) lib/puma/server.rb:435:in `process_client'
+puma (3.9.0) lib/puma/server.rb:299:in `block in run'
+puma (3.9.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/courses/1/edit" for 127.0.0.1 at 2017-06-03 17:47:55 +0700
+Processing by CoursesController#edit as HTML
+  Parameters: {"id"=>"1"}
+Completed 406 Not Acceptable in 95ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::UnknownFormat (CoursesController#edit is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+  
+actionpack (5.1.1) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
+actionpack (5.1.1) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
+actionpack (5.1.1) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
+actionpack (5.1.1) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.1.1) lib/abstract_controller/base.rb:186:in `process_action'
+actionpack (5.1.1) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.1.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.1.1) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.1.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.1) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.1) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.1) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.1) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.1) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.1) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.1) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.1) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.1) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.1) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.1) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.1) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.1) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.1) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.1) lib/action_dispatch/routing/route_set.rb:832:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.1) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.1) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.1) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.1) lib/rails/engine.rb:522:in `call'
+puma (3.9.0) lib/puma/configuration.rb:224:in `call'
+puma (3.9.0) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.0) lib/puma/server.rb:435:in `process_client'
+puma (3.9.0) lib/puma/server.rb:299:in `block in run'
+puma (3.9.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:48:02 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.8ms) [cache miss]
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (21.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (23.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.0ms) [cache miss]
+Completed 200 OK in 115ms (Views: 96.8ms | ActiveRecord: 11.1ms)
+
+
+Started GET "/courses/1/edit" for 127.0.0.1 at 2017-06-03 17:48:05 +0700
+Processing by CoursesController#edit as HTML
+  Parameters: {"id"=>"1"}
+Completed 406 Not Acceptable in 125ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::UnknownFormat (CoursesController#edit is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+  
+actionpack (5.1.1) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
+actionpack (5.1.1) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
+actionpack (5.1.1) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
+actionpack (5.1.1) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.1.1) lib/abstract_controller/base.rb:186:in `process_action'
+actionpack (5.1.1) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.1.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.1.1) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.1.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.1) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.1) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.1) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.1) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.1) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.1) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.1) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.1) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.1) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.1) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.1) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.1) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.1) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.1) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.1) lib/action_dispatch/routing/route_set.rb:832:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.1) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.1) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.1) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.1) lib/rails/engine.rb:522:in `call'
+puma (3.9.0) lib/puma/configuration.rb:224:in `call'
+puma (3.9.0) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.0) lib/puma/server.rb:435:in `process_client'
+puma (3.9.0) lib/puma/server.rb:299:in `block in run'
+puma (3.9.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:48:08 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.5ms) [cache miss]
+  [1m[36mCourse Load (0.9ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (7.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 65ms (Views: 59.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-03 17:48:09 +0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.9ms) [cache miss]
+  Rendered home/index.html.erb within layouts/application (3.9ms)
+  Rendered partials/_navbar.html.erb (4.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.6ms) [cache miss]
+Completed 200 OK in 143ms (Views: 125.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:48:41 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.5ms) [cache miss]
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (6.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.9ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.1ms) [cache miss]
+Completed 200 OK in 71ms (Views: 68.4ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:48:42 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"m4Av4DmzaqJtgrAcfbBnxWbUwn68Pdcqoqs2ae0Tsj9YXs38vEoV8XmKaXkLKMKfv1Xqiul9HLy4wN9iZwIQMw==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 115ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses/1/edit" for 127.0.0.1 at 2017-06-03 17:48:45 +0700
+Processing by CoursesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering courses/edit.html.erb within layouts/application
+  Rendered courses/edit.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.0ms) [cache miss]
+Completed 200 OK in 88ms (Views: 85.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/courses/1" for 127.0.0.1 at 2017-06-03 17:48:48 +0700
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering courses/show.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (1.0ms) [cache miss]
+  Rendered courses/show.html.erb within layouts/application (3.4ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.5ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.4ms) [cache miss]
+Completed 200 OK in 91ms (Views: 87.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/courses/1/edit" for 127.0.0.1 at 2017-06-03 17:48:51 +0700
+Processing by CoursesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering courses/edit.html.erb within layouts/application
+  Rendered courses/edit.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.9ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.1ms) [cache miss]
+Completed 200 OK in 108ms (Views: 105.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:49:36 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.5ms) [cache miss]
+  [1m[36mCourse Load (0.6ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (5.9ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.8ms) [cache miss]
+Completed 200 OK in 78ms (Views: 72.5ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:49:38 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"5K0sz3dTJ9iQyVZInjxcUMQ+GO7t52oYAPXStnlScNAnc87T8qpYi4TBjy3opPkKHb8wGrinoY4anju980PS3A==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 130ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:49:55 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.6ms) [cache miss]
+  [1m[36mCourse Load (1.0ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (11.9ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.9ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.9ms) [cache miss]
+Completed 200 OK in 118ms (Views: 112.8ms | ActiveRecord: 1.7ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:49:58 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"M69Vy3cbhDmmvvoTdLL7oyQBJcFW33nnHWWe6pY2IgLwcbfX8uL7arK2I3YCKl75/YANNQOfsnEHDnfhHCeADg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 125ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:49:59 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"M69Vy3cbhDmmvvoTdLL7oyQBJcFW33nnHWWe6pY2IgLwcbfX8uL7arK2I3YCKl75/YANNQOfsnEHDnfhHCeADg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 105ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:50:00 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"M69Vy3cbhDmmvvoTdLL7oyQBJcFW33nnHWWe6pY2IgLwcbfX8uL7arK2I3YCKl75/YANNQOfsnEHDnfhHCeADg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 106ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:50:00 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"M69Vy3cbhDmmvvoTdLL7oyQBJcFW33nnHWWe6pY2IgLwcbfX8uL7arK2I3YCKl75/YANNQOfsnEHDnfhHCeADg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 106ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:50:00 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"M69Vy3cbhDmmvvoTdLL7oyQBJcFW33nnHWWe6pY2IgLwcbfX8uL7arK2I3YCKl75/YANNQOfsnEHDnfhHCeADg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 103ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:50:01 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"M69Vy3cbhDmmvvoTdLL7oyQBJcFW33nnHWWe6pY2IgLwcbfX8uL7arK2I3YCKl75/YANNQOfsnEHDnfhHCeADg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 107ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:50:24 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.6ms) [cache miss]
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (8.5ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (4.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.2ms) [cache miss]
+Completed 200 OK in 95ms (Views: 91.1ms | ActiveRecord: 1.2ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:50:25 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"mqNmZq/B7OrXPi6mam3gtPxL/iVhTubTrG0y68laQBpZfYR6KjiTucM298Mc9UXuJcrW0TQOLUW2BtvgQ0viFg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 122ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:51:41 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.5ms) [cache miss]
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (5.4ms)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (couldn't find file 'jquery_ujs' with type 'application/javascript'
+Checked in these paths: 
+  /Users/pond/Workspace/codeponpon/mycourse/app/assets/config
+  /Users/pond/Workspace/codeponpon/mycourse/app/assets/images
+  /Users/pond/Workspace/codeponpon/mycourse/app/assets/javascripts
+  /Users/pond/Workspace/codeponpon/mycourse/app/assets/stylesheets
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/rails-assets-tether-1.4.0/app/assets/javascripts
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/rails-assets-tether-1.4.0/app/assets/stylesheets
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/actioncable-5.1.1/lib/assets/compiled
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/actionview-5.1.1/lib/assets/compiled
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/turbolinks-source-5.0.3/lib/assets/javascripts
+  /Users/pond/Workspace/codeponpon/mycourse/node_modules
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/bootstrap-4.0.0.alpha6/assets/stylesheets
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/bootstrap-4.0.0.alpha6/assets/javascripts
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/font-awesome-sass-4.7.0/assets/stylesheets
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/font-awesome-sass-4.7.0/assets/fonts):
+     5:     <%= csrf_meta_tags %>
+     6: 
+     7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/assets/javascripts/application.js:15
+app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb__4282659013217843842_70197961499160'
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:51:55 +0700
+  [1m[35m (6.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.9ms) [cache miss]
+  [1m[36mCourse Load (1.4ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (61.1ms)
+Completed 500 Internal Server Error in 361ms (ActiveRecord: 13.0ms)
+
+
+  
+ActionView::Template::Error (couldn't find file 'jquery_ujs' with type 'application/javascript'
+Checked in these paths: 
+  /Users/pond/Workspace/codeponpon/mycourse/app/assets/config
+  /Users/pond/Workspace/codeponpon/mycourse/app/assets/images
+  /Users/pond/Workspace/codeponpon/mycourse/app/assets/javascripts
+  /Users/pond/Workspace/codeponpon/mycourse/app/assets/stylesheets
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/rails-assets-tether-1.4.0/app/assets/javascripts
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/rails-assets-tether-1.4.0/app/assets/stylesheets
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/actioncable-5.1.1/lib/assets/compiled
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/actionview-5.1.1/lib/assets/compiled
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/turbolinks-source-5.0.3/lib/assets/javascripts
+  /Users/pond/Workspace/codeponpon/mycourse/node_modules
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/bootstrap-4.0.0.alpha6/assets/stylesheets
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/bootstrap-4.0.0.alpha6/assets/javascripts
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/font-awesome-sass-4.7.0/assets/stylesheets
+  /Users/pond/.rvm/gems/ruby-2.4.1@mycourse/gems/font-awesome-sass-4.7.0/assets/fonts):
+    4:     <title>Mycourse</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+   10: 
+  
+app/assets/javascripts/application.js:15
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb__2671381335212731090_70107416605060'
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:52:01 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.8ms) [cache miss]
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (6.7ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (20.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 351ms (Views: 344.5ms | ActiveRecord: 5.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:52:04 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"VSHffw2NTkLI8X3F/sn6I4TOzswXvK4z3C0jCUcp0liW/z1jiHQxEdz5pKCIUV95XU/mOEL8ZaXGRsoCzThwVA==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 147ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:53:33 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.5ms) [cache miss]
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (7.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.5ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 147ms (Views: 144.3ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:53:35 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+x6aji2yShepOo3aPHgG0dcu9bOsaz0YMfrZ9NuWCno4wHiSqEs1RL0yVL9K4KOLDq/dR/kr9o4rkTD/UYeodg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 114ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:53:36 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+x6aji2yShepOo3aPHgG0dcu9bOsaz0YMfrZ9NuWCno4wHiSqEs1RL0yVL9K4KOLDq/dR/kr9o4rkTD/UYeodg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 104ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:53:36 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+x6aji2yShepOo3aPHgG0dcu9bOsaz0YMfrZ9NuWCno4wHiSqEs1RL0yVL9K4KOLDq/dR/kr9o4rkTD/UYeodg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 105ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:53:37 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+x6aji2yShepOo3aPHgG0dcu9bOsaz0YMfrZ9NuWCno4wHiSqEs1RL0yVL9K4KOLDq/dR/kr9o4rkTD/UYeodg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 106ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:54:01 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (2.5ms) [cache miss]
+  [1m[36mCourse Load (0.9ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (27.0ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.7ms) [cache miss]
+Completed 200 OK in 186ms (Views: 179.5ms | ActiveRecord: 1.4ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:54:05 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"9K5ELfXFURwE5QGr6x5Wu9pQG+nqnVTGhNL70rm+fLw3cKYxcDwuTxDt2M6dhvPhA9EzHb/dn1CeuRLZM6/esA==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 142ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:54:05 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"9K5ELfXFURwE5QGr6x5Wu9pQG+nqnVTGhNL70rm+fLw3cKYxcDwuTxDt2M6dhvPhA9EzHb/dn1CeuRLZM6/esA==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 123ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:56:11 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.7ms) [cache miss]
+  [1m[36mCourse Load (0.6ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (21.3ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.7ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.3ms) [cache miss]
+Completed 200 OK in 131ms (Views: 125.7ms | ActiveRecord: 1.2ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:56:13 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"E1uRF9MgNfDdcAa0e1QR8g7TSL3Rsfv0d8wa2WntCs7QhXMLVtlKo8l439ENzLSo11JgSYTxMGJtp/PS4/yowg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 123ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:56:14 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"E1uRF9MgNfDdcAa0e1QR8g7TSL3Rsfv0d8wa2WntCs7QhXMLVtlKo8l439ENzLSo11JgSYTxMGJtp/PS4/yowg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 105ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 17:56:15 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"E1uRF9MgNfDdcAa0e1QR8g7TSL3Rsfv0d8wa2WntCs7QhXMLVtlKo8l439ENzLSo11JgSYTxMGJtp/PS4/yowg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 105ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 17:57:24 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.8ms) [cache miss]
+  [1m[36mCourse Load (1.0ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (9.4ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 92ms (Views: 88.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:09:52 +0700
+  [1m[35m (6.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (1.7ms) [cache miss]
+  [1m[36mCourse Load (1.1ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (82.9ms)
+  [1m[36mUser Load (24.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (232.8ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.9ms) [cache miss]
+Completed 200 OK in 911ms (Views: 798.0ms | ActiveRecord: 90.7ms)
+
+
+Started GET "/courses/1" for 127.0.0.1 at 2017-06-03 18:10:18 +0700
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering courses/show.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.6ms) [cache miss]
+  Rendered courses/show.html.erb within layouts/application (2.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.1ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.3ms) [cache miss]
+Completed 200 OK in 137ms (Views: 133.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/courses/1/edit" for 127.0.0.1 at 2017-06-03 18:10:22 +0700
+Processing by CoursesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering courses/edit.html.erb within layouts/application
+  Rendered courses/edit.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.0ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 113ms (Views: 110.0ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:10:24 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"otuGe4bqYJGM5lQhUevbXc5TtjxGN8IVERWDLSyF5S1hBWRnAxMfwpjujUQnc34HF9KeyBN3CYMLfmomppRHIQ==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 121ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:10:44 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.8ms) [cache miss]
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (8.8ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (7.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.7ms) [cache miss]
+Completed 200 OK in 146ms (Views: 142.8ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:10:47 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"uq2y4YqeMdM4pNcuR7bfiunCwhwHsw13IghLh03Vdeh5c1D9D2dOgCysDksxLnrQMEPq6FLzxuE4Y6KMx8TX5A==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 167ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:10:56 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.4ms) [cache miss]
+  [1m[36mCourse Load (0.8ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (8.3ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 133ms (Views: 123.9ms | ActiveRecord: 1.4ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:10:58 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"6FDPsItwLoor1VwMwQK9Cj4ED5A+JdUAiwfUb89SMsIrji2sDolR2T/dhWm3mhhQ54UnZGtlHpaRbD1kRUOQzg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 190ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:14:20 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.9ms) [cache miss]
+  [1m[36mCourse Load (0.7ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (49.3ms)
+Completed 500 Internal Server Error in 66ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"delete", :controller=>"courses", :id=>1}):
+    31:               <td>
+    32:                 <%= link_to raw("#{icon 'search'}"), course_path(course), class: 'btn btn-info' %>
+    33:                 <%= link_to raw("#{icon 'pencil'}"), edit_course_path(course), class: 'btn btn-info' %>
+    34:                 <%= button_to raw("#{icon 'trash'}"), { action: "delete", id: course[:id] }, method: :delete, data: { confirm: "Are you sure?" } %>
+    35:               </td>
+    36:             </tr>
+    37:         <% end %>
+  
+app/views/courses/index.html.erb:34:in `block in _app_views_courses_index_html_erb__271217132034972001_70224905144860'
+app/views/courses/index.html.erb:23:in `_app_views_courses_index_html_erb__271217132034972001_70224905144860'
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:16:16 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.8ms) [cache miss]
+  [1m[36mCourse Load (0.6ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (12.0ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (6.8ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.8ms) [cache miss]
+Completed 200 OK in 125ms (Views: 119.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:16:44 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered courses/index.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/pond/Workspace/codeponpon/mycourse/app/views/courses/index.html.erb:34: syntax error, unexpected ':', expecting ')'
+irm: "Are you sure?" }. class: 'btn' );@output_buffer.safe_a
+                              ^):
+  
+app/views/courses/index.html.erb:34: syntax error, unexpected ':', expecting ')'
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:16:48 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.6ms) [cache miss]
+  [1m[36mCourse Load (2.5ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (10.9ms)
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (7.8ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (2.3ms) [cache miss]
+Completed 200 OK in 115ms (Views: 105.2ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:16:58 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.5ms) [cache miss]
+  [1m[36mCourse Load (0.6ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (7.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.1ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.1ms) [cache miss]
+Completed 200 OK in 70ms (Views: 67.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:17:10 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.7ms) [cache miss]
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (12.9ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.6ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (4.2ms) [cache miss]
+Completed 200 OK in 94ms (Views: 86.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:17:21 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.7ms) [cache miss]
+  [1m[36mCourse Load (0.6ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (9.4ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.1ms) [cache miss]
+Completed 200 OK in 117ms (Views: 112.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:18:01 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (1.0ms) [cache miss]
+  [1m[36mCourse Load (1.4ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (23.8ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (5.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (2.4ms) [cache miss]
+Completed 200 OK in 139ms (Views: 119.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:18:13 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.4ms) [cache miss]
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (6.3ms)
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (7.1ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (2.3ms) [cache miss]
+Completed 200 OK in 79ms (Views: 75.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:18:15 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.4ms) [cache miss]
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (5.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.1ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.5ms) [cache miss]
+Completed 200 OK in 112ms (Views: 107.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:18:16 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.7ms) [cache miss]
+  [1m[36mCourse Load (1.0ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (9.2ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.6ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 96ms (Views: 91.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:18:25 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.9ms) [cache miss]
+  [1m[36mCourse Load (1.8ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (21.6ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.1ms) [cache miss]
+Completed 200 OK in 116ms (Views: 111.8ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:18:29 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (2.8ms) [cache miss]
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (9.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 78ms (Views: 75.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:18:31 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.4ms) [cache miss]
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (12.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.0ms) [cache miss]
+Completed 200 OK in 68ms (Views: 64.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:19:24 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.8ms) [cache miss]
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (8.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.9ms) [cache miss]
+Completed 200 OK in 100ms (Views: 95.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:19:26 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.6ms) [cache miss]
+  [1m[36mCourse Load (16.4ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (23.4ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.3ms) [cache miss]
+Completed 200 OK in 97ms (Views: 77.3ms | ActiveRecord: 16.9ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:19:49 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.6ms) [cache miss]
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (6.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (1.9ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 72ms (Views: 67.9ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:19:51 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"IwIdlWJeWxzuNtpcLPJs+1kTQAGRl7bj3ty5vCsn+T/g3P+J56ckT/o+AzlaasmhgJJo9cTXfXXEt1C3oTZbMw==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 116ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:19:53 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"IwIdlWJeWxzuNtpcLPJs+1kTQAGRl7bj3ty5vCsn+T/g3P+J56ckT/o+AzlaasmhgJJo9cTXfXXEt1C3oTZbMw==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 104ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:19:55 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"IwIdlWJeWxzuNtpcLPJs+1kTQAGRl7bj3ty5vCsn+T/g3P+J56ckT/o+AzlaasmhgJJo9cTXfXXEt1C3oTZbMw==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 107ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:19:55 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"IwIdlWJeWxzuNtpcLPJs+1kTQAGRl7bj3ty5vCsn+T/g3P+J56ckT/o+AzlaasmhgJJo9cTXfXXEt1C3oTZbMw==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 104ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:19:55 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"IwIdlWJeWxzuNtpcLPJs+1kTQAGRl7bj3ty5vCsn+T/g3P+J56ckT/o+AzlaasmhgJJo9cTXfXXEt1C3oTZbMw==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 104ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:19:56 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"IwIdlWJeWxzuNtpcLPJs+1kTQAGRl7bj3ty5vCsn+T/g3P+J56ckT/o+AzlaasmhgJJo9cTXfXXEt1C3oTZbMw==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 104ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:19:56 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.9ms) [cache miss]
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (6.8ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.3ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.7ms) [cache miss]
+Completed 200 OK in 58ms (Views: 55.1ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:20:06 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"zxl9x7U4KgKTwc+KqWRmqA3z+MCb90HYR7mFme04AosMx5/bMMFVUYfJFu/f/MPy1HLQNM63ik5d0mySZymghw==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 112ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:20:07 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"zxl9x7U4KgKTwc+KqWRmqA3z+MCb90HYR7mFme04AosMx5/bMMFVUYfJFu/f/MPy1HLQNM63ik5d0mySZymghw==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 103ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:21:23 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.5ms) [cache miss]
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (6.1ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 87ms (Views: 82.0ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:21:25 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"pXxaqasvpQwAdyCmujPXLHSR77cuWqf7jTdvZhxJ0kJmori1LtbaXxR/+cPMq3J2rRDHQ3sabG2XXIZtllhwTg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 125ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:21:26 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"pXxaqasvpQwAdyCmujPXLHSR77cuWqf7jTdvZhxJ0kJmori1LtbaXxR/+cPMq3J2rRDHQ3sabG2XXIZtllhwTg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 108ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:21:28 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"pXxaqasvpQwAdyCmujPXLHSR77cuWqf7jTdvZhxJ0kJmori1LtbaXxR/+cPMq3J2rRDHQ3sabG2XXIZtllhwTg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 106ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:21:28 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"pXxaqasvpQwAdyCmujPXLHSR77cuWqf7jTdvZhxJ0kJmori1LtbaXxR/+cPMq3J2rRDHQ3sabG2XXIZtllhwTg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 100ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-03 18:21:37 +0700
+  [1m[35m (7.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.7ms) [cache miss]
+  Rendered home/index.html.erb within layouts/application (4.3ms)
+  Rendered partials/_navbar.html.erb (2.0ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.0ms) [cache miss]
+Completed 200 OK in 425ms (Views: 354.0ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:21:39 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.9ms) [cache miss]
+  [1m[36mCourse Load (10.7ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (61.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.5ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.4ms) [cache miss]
+Completed 200 OK in 201ms (Views: 166.9ms | ActiveRecord: 25.1ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:21:40 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"PmgzUvfYPf4z0km0B+VBg+9+oMYudAOBofz/5PdPTTT9ttFOciFCrSfakNFxfeTZNv+IMns0yBe7lxbvfV7vOA==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 129ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:21:45 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"PmgzUvfYPf4z0km0B+VBg+9+oMYudAOBofz/5PdPTTT9ttFOciFCrSfakNFxfeTZNv+IMns0yBe7lxbvfV7vOA==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 150ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:21:54 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.8ms) [cache miss]
+  [1m[36mCourse Load (1.1ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (9.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 117ms (Views: 109.8ms | ActiveRecord: 1.5ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:21:57 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"HYks8Dt72psyCh7Tpfk/qXLxCskDxhWZgE4CFnxHr7reV87svoKlyCYCx7bTYZrzq3AiPVaG3g+aJesd9lYNtg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 167ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:22:26 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.3ms) [cache miss]
+  [1m[36mCourse Load (0.6ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (5.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.5ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (2.6ms) [cache miss]
+Completed 200 OK in 73ms (Views: 69.6ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:22:28 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"NRFrWhTkvUZleTd64XTK5KL9aiJQ+VhPFepgYP4lRDn2z4lGkR3CFXFx7h+X7G++e3xC1gW5k9kPgYlrdDTmNQ==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 166ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:22:39 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (1.0ms) [cache miss]
+  [1m[36mCourse Load (0.7ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (8.9ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.8ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (1.6ms) [cache miss]
+Completed 200 OK in 79ms (Views: 75.4ms | ActiveRecord: 1.2ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:22:41 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"A0CxGyH6A28cAV4qo/TW4yJsJygOWskKX2BqzunXBm3AnlMHpAN8PAgJh0/VbHO5++0P3FsaApxFC4PFY8akYQ==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 147ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:22:42 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"A0CxGyH6A28cAV4qo/TW4yJsJygOWskKX2BqzunXBm3AnlMHpAN8PAgJh0/VbHO5++0P3FsaApxFC4PFY8akYQ==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 124ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:23:14 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.5ms) [cache miss]
+  [1m[36mCourse Load (0.6ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (6.9ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.4ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 92ms (Views: 88.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:23:44 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.6ms) [cache miss]
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (6.5ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (3.5ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (3.1ms) [cache miss]
+Completed 200 OK in 76ms (Views: 72.4ms | ActiveRecord: 1.2ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:23:46 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"2c8k39x/EpHqEyyT3dbqbIufwM0oLhek8zQHNIgwao4aEcbDWYZtwv4b9farTk82Uh7oOX1u3DLpX+4/AiHIgg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 136ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:23:47 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"2c8k39x/EpHqEyyT3dbqbIufwM0oLhek8zQHNIgwao4aEcbDWYZtwv4b9farTk82Uh7oOX1u3DLpX+4/AiHIgg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 127ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:23:49 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"2c8k39x/EpHqEyyT3dbqbIufwM0oLhek8zQHNIgwao4aEcbDWYZtwv4b9farTk82Uh7oOX1u3DLpX+4/AiHIgg==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 120ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:23:56 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.3ms) [cache miss]
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (4.8ms)
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (7.6ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.9ms) [cache miss]
+Completed 200 OK in 92ms (Views: 87.8ms | ActiveRecord: 1.7ms)
+
+
+Started DELETE "/courses/1" for 127.0.0.1 at 2017-06-03 18:24:01 +0700
+Processing by CoursesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"0ddqwpR9/yXhA9xnpjZpdvz/zmG0NoM+/NnmVoLcjXUSCYjeEYSAdvULBQLQrswsJX7mleF2SKjmsg9dCM0veQ==", "id"=>"1"}
+No template found for CoursesController#destroy, rendering head :no_content
+Completed 204 No Content in 180ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2017-06-03 18:24:03 +0700
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  Rendered partials/_breadcrumb.html.erb (0.3ms) [cache miss]
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered courses/index.html.erb within layouts/application (4.1ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered partials/_navbar.html.erb (2.2ms) [cache miss]
+  Rendered partials/_side_bar.html.erb (0.6ms) [cache miss]
+Completed 200 OK in 65ms (Views: 60.5ms | ActiveRecord: 0.8ms)
+
+

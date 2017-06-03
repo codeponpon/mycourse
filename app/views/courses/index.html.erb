@@ -1,2 +1,43 @@
-<h1>Courses#index</h1>
-<p>Find me in app/views/courses/index.html.erb</p>
+<%= render partial: 'partials/breadcrumb' %>
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      Courses
+      <div class="card-actions">
+        <%= link_to raw("#{icon 'plus'}"), '#', class: 'btn' %>
+      </div>
+    </div>
+    <div class="card-block">
+      <table>
+        <thead>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Subject</th>
+        <th>Start time</th>
+        <th>End time</th>
+        <th></th>
+        </thead>
+        <tbody>
+        <% @courses.each do |course| %>
+            <tr>
+              <td><%= course[:name] %></td>
+              <td><%= course[:description] %></td>
+              <td><%= course[:category] %></td>
+              <td><%= course[:subject] %></td>
+              <td><%= course[:start_time] %></td>
+              <td><%= course[:end_time] %></td>
+              <td>
+                <%= link_to raw("#{icon 'search'}"), course_path(course), class: 'btn btn-info' %>
+                <%= link_to raw("#{icon 'pencil'}"), edit_course_path(course), class: 'btn btn-info' %>
+                <%= link_to raw("#{icon 'trash'}"), course_path(course), class: 'btn btn-danger', method: :delete, data: {confirm: "Are you sure?", disable_with: "Loading..."} %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <%= will_paginate(@courses, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+    </div>
+  </div>
+</div>

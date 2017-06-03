@@ -1,0 +1,51 @@
+.card-header .card-actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  a, button {
+    display: block;
+    float: left;
+    width: 50px;
+    padding: 0.75rem 0;
+    margin: 0 !important;
+    color: #2a2c36;
+    text-align: center;
+    background: transparent;
+    border: 0;
+    border-left: 1px solid #d1d4d7;
+    box-shadow: 0;
+  }
+  a:hover, button:hover {
+    text-decoration: none;
+  }
+  a {
+    [class^="icon-"], [class*=" icon-"] {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+  button {
+    [class^="icon-"], [class*=" icon-"] {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+  a i, button i {
+    display: inline-block;
+    transition: .4s;
+  }
+  a i.r180, button i.r180 {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  .input-group {
+    width: 230px;
+    margin: 6px;
+    .input-group-addon {
+      background: #fff;
+    }
+    input {
+      border-left: 0;
+    }
+  }
+}
