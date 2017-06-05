@@ -3,13 +3,33 @@
 <div class="container">
   <div class="card">
     <div class="card-header">
-      Courses
+      List
       <div class="card-actions">
-        <%= link_to raw("#{icon 'plus'}"), '#', class: 'btn' %>
+        <%= link_to raw("#{icon 'plus'}"), new_course_path, class: 'btn' %>
       </div>
     </div>
     <div class="card-block">
-      <table>
+      <%= form_with(url: search_courses_path, class: 'form-inline') do |f| %>
+        <div class="form-group col-md-3 ">
+          <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
+        </div>
+
+        <div class="form-group col-md-4 ">
+          <%= f.label :start_time %>
+          <%= f.date_select :start_time, class: 'form-control'  %>
+        </div>
+
+        <div class="form-group col-md-4 ">
+          <%= f.label :end_time %>
+          <%= f.date_select :end_time, class: 'form-control'  %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Search", class: 'btn btn-sm btn-primary' %>
+        </div>
+      <% end %>
+      <br>
+      <table class="table table-striped table-bordered">
         <thead>
         <th>Name</th>
         <th>Description</th>
@@ -26,9 +46,9 @@
               <td><%= course[:description] %></td>
               <td><%= course[:category] %></td>
               <td><%= course[:subject] %></td>
-              <td><%= course[:start_time] %></td>
-              <td><%= course[:end_time] %></td>
-              <td>
+              <td><%= course[:start_time].to_date %></td>
+              <td><%= course[:end_time].to_date %></td>
+              <td width="177">
                 <%= link_to raw("#{icon 'search'}"), course_path(course), class: 'btn btn-info' %>
                 <%= link_to raw("#{icon 'pencil'}"), edit_course_path(course), class: 'btn btn-info' %>
                 <%= link_to raw("#{icon 'trash'}"), course_path(course), class: 'btn btn-danger', method: :delete, data: {confirm: "Are you sure?", disable_with: "Loading..."} %>

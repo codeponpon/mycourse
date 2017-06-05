@@ -1,5 +1,56 @@
 <%= render partial: 'partials/breadcrumb' %>
 
-<div class="container-fluid">
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <%= action_name.capitalize %>
+      <div class="card-actions">
+        <%= link_to raw("#{icon 'pencil'}"), edit_course_path(@course), class: 'btn' %>
+      </div>
+    </div>
+    <div class="card-block">
+      <div class="form-group row">
+        <div class="col-2"> Name: </div>
+        <div class="col-10">
+          <%= @course[:name] %>
+        </div>
+      </div>
 
+      <div class="form-group row">
+        <div class="col-2"> Description: </div>
+        <div class="col-10">
+          <%= @course[:description] %>
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <div class="col-2"> Category: </div>
+        <div class="col-10">
+          <%= @course[:category] %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-2"> Subject </div>
+        <div class="col-10">
+          <%= @course[:subject] %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-2"> Start Time: </div>
+        <div class="col-10">
+          <%= @course[:start_time].to_date %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-2"> End Time: </div>
+        <div class="col-10">
+          <%= @course[:end_time].to_date %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
