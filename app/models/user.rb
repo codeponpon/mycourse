@@ -11,7 +11,7 @@ class User < ApplicationRecord
   after_create :assign_default_role
 
   def assign_default_role
-    add_role(:student)
+    (:student) if roles.empty?
   end
 
   def course_enroll?(course)

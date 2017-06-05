@@ -22,12 +22,21 @@
             <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password' %>
           </div>
 
-          <div class="input-group mb-2">
+          <div class="input-group mb-1">
             <span class="input-group-addon"><%= icon 'lock' %></i>
             </span>
             <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Repeat password' %>
           </div>
 
+
+          <%= f.fields_for :role do |r| %>
+              <div class="form-group mb-1">
+                <%= r.select(:id, Role.all.collect { |p| [ p.name, p.id ] }, {}, {class: 'form-control'}) %>
+              </div>
+          <% end %>
+
+          <br>
+          <br>
           <%=  f.submit 'Create Account', class: 'btn btn-block btn-success' %>
 
           <%- if controller_name != 'sessions' %>
