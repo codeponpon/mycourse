@@ -4,9 +4,9 @@ class CoursesController < ApplicationController
   def index
     if params[:commit].eql?('Search')
       if params[:name].blank?
-        @courses = Course.where('start_time>=? OR end_time<=?', params[:start_time], params[:end_time]).paginate(:page => params[:page], :per_page => 30)
+        @courses = Course.where("start_time>=? OR end_time<=?", params[:start_time], params[:end_time]).paginate(:page => params[:page], :per_page => 30)
       else
-        @courses = Course.where('name LIKE ? OR start_time>=? OR end_time<=?', "%#{params[:name]}%", params[:start_time], params[:end_time]).paginate(:page => params[:page], :per_page => 30)
+        @courses = Course.where("name LIKE ? OR start_time>=? OR end_time<=?", "%#{params[:name]}%", params[:start_time], params[:end_time]).paginate(:page => params[:page], :per_page => 30)
       end
     else
       @courses = Course.paginate(:page => params[:page], :per_page => 30)
