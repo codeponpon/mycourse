@@ -39,14 +39,14 @@
           <div class="form-group row">
             <%= f.label :start_time, class: 'col-2 col-form-label' %>
             <div class="col-10">
-              <%= f.date_select :start_time, class: 'form-control' %>
+              <%= f.date_field :start_time, as: :date, value: f.object.try(:strftime,"%m/%d/%Y"), class: 'form-control' %>
             </div>
           </div>
 
           <div class="form-group row">
             <%= f.label :end_time, class: 'col-2 col-form-label' %>
             <div class="col-10">
-              <%= f.date_select :end_time, class: 'form-control' %>
+              <%= f.date_field :end_time, as: :date, value: f.object.try(:strftime,"%m/%d/%Y"), class: 'form-control' %>
             </div>
           </div>
 

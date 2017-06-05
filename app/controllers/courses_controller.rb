@@ -2,7 +2,15 @@ class CoursesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @courses = Course.paginate(:page => params[:page], :per_page => 30)
+    if params[:commit].eql?('Search')
+      if params[:name].blank?
+        @courses = Course.where('start_time>=? OR end_time<=?', params[:start_time], params[:end_time]).paginate(:page => params[:page], :per_page => 30)
+      else
+        @courses = Course.where('name LIKE ? OR start_time>=? OR end_time<=?', "%#{params[:name]}%", params[:start_time], params[:end_time]).paginate(:page => params[:page], :per_page => 30)
+      end
+    else
+      @courses = Course.paginate(:page => params[:page], :per_page => 30)
+    end
   end
 
   def show
@@ -18,7 +26,7 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = Course.new(permit_params)
+    @course = current_user.courses.new(permit_params)
     if @course.save
       redirect_to @course
     else
@@ -34,14 +42,25 @@ class CoursesController < ApplicationController
 
   def destroy
     course = Course.find_by_id(params[:id])
-    redirect_to course_path if course.destroy
+    redirect_to courses_path if course.destroy
   end
 
-  def search
+  def enrollment
+    course = Course.find(params[:id])
+    if course.student_count == course.students.count
+      render js: "alert('Sorrey this course is full!')" and return
+    end
+    enroll = current_user.enrollments.new
+    enroll.course = course
+    if enroll.save
+      redirect_to :courses
+    else
+      render js: "alert('Opps Something went wrong!')"
+    end
   end
 
   private
   def permit_params
-    params.require(:course).permit(:name, :description, :category, :subject, :start_time, :end_time)
+    params.require(:course).permit(:name, :description, :category, :subject, :start_time, :end_time, :student_count)
   end
 end

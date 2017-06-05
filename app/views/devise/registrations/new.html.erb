@@ -28,7 +28,8 @@
             <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Repeat password' %>
           </div>
 
-          <button type="button" class="btn btn-block btn-success">Create Account</button>
+          <%=  f.submit 'Create Account', class: 'btn btn-block btn-success' %>
+
           <%- if controller_name != 'sessions' %>
               <%= link_to "Log in", new_session_path(resource_name), class: 'btn btn-block btn-primary' %><br />
           <% end -%>

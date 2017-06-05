@@ -4,24 +4,26 @@
   <div class="card">
     <div class="card-header">
       List
-      <div class="card-actions">
-        <%= link_to raw("#{icon 'plus'}"), new_course_path, class: 'btn' %>
-      </div>
+      <% unless current_user.roles.map(&:name).include?('student') %>
+          <div class="card-actions">
+            <%= link_to raw("#{icon 'plus'}"), new_course_path, class: 'btn' %>
+          </div>
+    <% end %>
     </div>
     <div class="card-block">
-      <%= form_with(url: search_courses_path, class: 'form-inline') do |f| %>
+      <%= form_with(url: courses_path, class: 'form-inline', data: {remote: false}, method: :get) do |f| %>
         <div class="form-group col-md-3 ">
-          <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
+          <%= f.text_field :name, value: params[:name], class: 'form-control', placeholder: 'Name' %>
         </div>
 
         <div class="form-group col-md-4 ">
           <%= f.label :start_time %>
-          <%= f.date_select :start_time, class: 'form-control'  %>
+          <%= f.text_field :start_time, value: params[:start_time], required: true, type: :date, class: 'form-control'  %>
         </div>
 
         <div class="form-group col-md-4 ">
           <%= f.label :end_time %>
-          <%= f.date_select :end_time, class: 'form-control'  %>
+          <%= f.text_field :end_time, value: params[:end_time], required: true, type: :date, class: 'form-control'  %>
         </div>
 
         <div class="actions">
@@ -49,9 +51,14 @@
               <td><%= course[:start_time].to_date %></td>
               <td><%= course[:end_time].to_date %></td>
               <td width="177">
-                <%= link_to raw("#{icon 'search'}"), course_path(course), class: 'btn btn-info' %>
-                <%= link_to raw("#{icon 'pencil'}"), edit_course_path(course), class: 'btn btn-info' %>
-                <%= link_to raw("#{icon 'trash'}"), course_path(course), class: 'btn btn-danger', method: :delete, data: {confirm: "Are you sure?", disable_with: "Loading..."} %>
+                <% if current_user.roles.map(&:name).include?('student') %>
+                  <%= link_to raw("#{icon 'plus'}"), enrollment_courses_path(course), class: 'btn btn-info', remote: true, method: :post unless current_user.course_enroll?(course) %>
+                  <%= link_to raw("#{icon 'check-square-o'}"), '#', class: 'btn btn-success disabled' if current_user.course_enroll?(course) %>
+                <% else %>
+                  <%= link_to raw("#{icon 'search'}"), course_path(course), class: 'btn btn-info' %>
+                  <%= link_to raw("#{icon 'pencil'}"), edit_course_path(course), class: 'btn btn-info' %>
+                  <%= link_to raw("#{icon 'trash'}"), course_path(course), class: 'btn btn-danger', method: :delete, data: {confirm: "Are you sure?", disable_with: "Loading..."} %>
+                <% end %>
               </td>
             </tr>
         <% end %>
